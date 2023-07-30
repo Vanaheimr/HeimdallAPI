@@ -1,0 +1,13 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "module": "system",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "allowJs": false,
+    "target": "ES2022"
+  },
+  "files": [
+    "HTTPRoot/defaults/defaults.ts"
+  ]
+}
