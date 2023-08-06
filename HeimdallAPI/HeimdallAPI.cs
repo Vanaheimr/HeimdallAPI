@@ -896,7 +896,7 @@ namespace org.GraphDefined.Vanaheimr.Heimdall.API
                            String                                LogfileName                        = DefaultHeimdallAPI_LogfileName,
                            LogfileCreatorDelegate?               LogfileCreator                     = null,
                            DNSClient?                            DNSClient                          = null,
-                           Boolean                               Autostart                          = false)
+                           Boolean                               AutoStart                          = false)
 
             : base(HTTPHostname,
                    ExternalDNSName,
@@ -973,7 +973,7 @@ namespace org.GraphDefined.Vanaheimr.Heimdall.API
                    LogfileName          ?? DefaultHeimdallAPI_LogfileName,
                    LogfileCreator,
                    DNSClient,
-                   Autostart)
+                   AutoStart)
 
         {
 

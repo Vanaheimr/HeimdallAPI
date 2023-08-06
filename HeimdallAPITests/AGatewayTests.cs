@@ -45,17 +45,17 @@ namespace org.GraphDefined.Vanaheimr.Heimdall.API.Tests
 
             httpAPI1     = new HTTPAPI(
                                HTTPServerPort:  HTTPAPI1_TCPPort,
-                               Autostart:       true
+                               AutoStart:       true
                            );
 
             httpAPI2     = new HTTPAPI(
                                HTTPServerPort:  HTTPAPI2_TCPPort,
-                               Autostart:       true
+                               AutoStart:       true
                            );
 
             heimdallAPI  = new HeimdallAPI(
                                HTTPServerPort:  HeimdallAPI_TCPPort,
-                               Autostart:       true
+                               AutoStart:       true
                            );
 
         }
