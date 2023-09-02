@@ -18,7 +18,6 @@
 #region Usings
 
 using System.Reflection;
-using System.Net.Security;
 using System.Security.Authentication;
 
 using Newtonsoft.Json.Linq;
@@ -33,8 +32,6 @@ using org.GraphDefined.Vanaheimr.Hermod.DNS;
 using org.GraphDefined.Vanaheimr.Hermod.Logging;
 using org.GraphDefined.Vanaheimr.Hermod.Sockets;
 using org.GraphDefined.Vanaheimr.Hermod.Sockets.TCP;
-
-using social.OpenData.UsersAPI;
 
 #endregion
 
@@ -53,7 +50,7 @@ namespace org.GraphDefined.Vanaheimr.Heimdall.API
     /// <summary>
     /// The Heimdall API.
     /// </summary>
-    public class HeimdallAPI : UsersAPI
+    public class HeimdallAPI : HTTPExtAPI
     {
 
         #region Data
@@ -864,9 +861,9 @@ namespace org.GraphDefined.Vanaheimr.Heimdall.API
                            EMailAddress?                        APIRobotEMailAddress             = null,
                            String?                              APIRobotGPGPassphrase            = null,
                            ISMTPClient?                         SMTPClient                       = null,
-                           ISMSClient?                          SMSClient                        = null,
-                           String?                              SMSSenderName                    = null,
-                           ITelegramStore?                      TelegramClient                   = null,
+                           //ISMSClient?                          SMSClient                        = null,
+                           //String?                              SMSSenderName                    = null,
+                           //ITelegramStore?                      TelegramClient                   = null,
 
                            PasswordQualityCheckDelegate?        PasswordQualityCheck             = null,
                            HTTPCookieName?                      CookieName                       = null,
@@ -930,9 +927,9 @@ namespace org.GraphDefined.Vanaheimr.Heimdall.API
                                            ),
                    APIRobotGPGPassphrase,
                    SMTPClient           ?? new NullMailer(),
-                   SMSClient,
-                   SMSSenderName,
-                   TelegramClient,
+                   //SMSClient,
+                   //SMSSenderName,
+                   //TelegramClient,
 
                    PasswordQualityCheck,
                    CookieName           ?? HTTPCookieName.Parse(nameof(HeimdallAPI)),
@@ -1016,7 +1013,7 @@ namespace org.GraphDefined.Vanaheimr.Heimdall.API
 
             => GetResourceStream(ResourceName,
                                  new Tuple<String, Assembly>(HeimdallAPI.HTTPRoot, typeof(HeimdallAPI).Assembly),
-                                 new Tuple<String, Assembly>(UsersAPI.   HTTPRoot, typeof(UsersAPI).   Assembly),
+                                 new Tuple<String, Assembly>(HTTPExtAPI. HTTPRoot, typeof(HTTPExtAPI). Assembly),
                                  new Tuple<String, Assembly>(HTTPAPI.    HTTPRoot, typeof(HTTPAPI).    Assembly));
 
         #endregion
@@ -1027,7 +1024,7 @@ namespace org.GraphDefined.Vanaheimr.Heimdall.API
 
             => GetResourceMemoryStream(ResourceName,
                                        new Tuple<String, Assembly>(HeimdallAPI.HTTPRoot, typeof(HeimdallAPI).Assembly),
-                                       new Tuple<String, Assembly>(UsersAPI.   HTTPRoot, typeof(UsersAPI).   Assembly),
+                                       new Tuple<String, Assembly>(HTTPExtAPI. HTTPRoot, typeof(HTTPExtAPI). Assembly),
                                        new Tuple<String, Assembly>(HTTPAPI.    HTTPRoot, typeof(HTTPAPI).    Assembly));
 
         #endregion
@@ -1038,7 +1035,7 @@ namespace org.GraphDefined.Vanaheimr.Heimdall.API
 
             => GetResourceString(ResourceName,
                                  new Tuple<String, Assembly>(HeimdallAPI.HTTPRoot, typeof(HeimdallAPI).Assembly),
-                                 new Tuple<String, Assembly>(UsersAPI.   HTTPRoot, typeof(UsersAPI).   Assembly),
+                                 new Tuple<String, Assembly>(HTTPExtAPI. HTTPRoot, typeof(HTTPExtAPI). Assembly),
                                  new Tuple<String, Assembly>(HTTPAPI.    HTTPRoot, typeof(HTTPAPI).    Assembly));
 
         #endregion
@@ -1049,7 +1046,7 @@ namespace org.GraphDefined.Vanaheimr.Heimdall.API
 
             => GetResourceBytes(ResourceName,
                                 new Tuple<String, Assembly>(HeimdallAPI.HTTPRoot, typeof(HeimdallAPI).Assembly),
-                                new Tuple<String, Assembly>(UsersAPI.   HTTPRoot, typeof(UsersAPI).   Assembly),
+                                new Tuple<String, Assembly>(HTTPExtAPI. HTTPRoot, typeof(HTTPExtAPI). Assembly),
                                 new Tuple<String, Assembly>(HTTPAPI.    HTTPRoot, typeof(HTTPAPI).    Assembly));
 
         #endregion
@@ -1060,7 +1057,7 @@ namespace org.GraphDefined.Vanaheimr.Heimdall.API
 
             => MixWithHTMLTemplate(ResourceName,
                                    new Tuple<String, Assembly>(HeimdallAPI.HTTPRoot, typeof(HeimdallAPI).Assembly),
-                                   new Tuple<String, Assembly>(UsersAPI.   HTTPRoot, typeof(UsersAPI).   Assembly),
+                                   new Tuple<String, Assembly>(HTTPExtAPI. HTTPRoot, typeof(HTTPExtAPI). Assembly),
                                    new Tuple<String, Assembly>(HTTPAPI.    HTTPRoot, typeof(HTTPAPI).    Assembly));
 
         #endregion
@@ -1075,7 +1072,7 @@ namespace org.GraphDefined.Vanaheimr.Heimdall.API
                                    ResourceName,
                                    new Tuple<String, Assembly>[] {
                                        new Tuple<String, Assembly>(HeimdallAPI.HTTPRoot, typeof(HeimdallAPI).Assembly),
-                                       new Tuple<String, Assembly>(UsersAPI.   HTTPRoot, typeof(UsersAPI).   Assembly),
+                                       new Tuple<String, Assembly>(HTTPExtAPI. HTTPRoot, typeof(HTTPExtAPI). Assembly),
                                        new Tuple<String, Assembly>(HTTPAPI.    HTTPRoot, typeof(HTTPAPI).    Assembly)
                                    },
                                    Content);
